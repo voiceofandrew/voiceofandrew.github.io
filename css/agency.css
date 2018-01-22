@@ -106,6 +106,12 @@ body {
     #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
       color: #fed136; }
 
+@media (max-width: 449px) {
+  .navbar-brand {
+    font-size: .9em;
+  }
+}
+
 @media (min-width: 1440px) {
   #mainNav {
     padding-top: 25px;
