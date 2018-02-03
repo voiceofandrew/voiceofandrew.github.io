@@ -190,6 +190,7 @@ header.masthead {
 -webkit-touch-callout: none /*only to disable context menu on long press*/
 }
 
+
 #portfolio .portfolio-item {
   right: 0;
   margin: 0 0 15px; }
@@ -209,7 +210,13 @@ header.masthead {
       opacity: 0;
       background: rgba(254, 209, 54, 0.9); }
       #portfolio .portfolio-item .portfolio-link .portfolio-hover:hover {
-        opacity: 1; }
+        opacity: 1; } 
+      @media (max-width: 768px) {
+        #portfolio .portfolio-item .portfolio-link .portfolio-hover {
+        opacity: 1;
+        background: rgba(254, 209, 54, 0.1);
+      }
+    }
       #portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content {
         font-size: 20px;
         position: absolute;
