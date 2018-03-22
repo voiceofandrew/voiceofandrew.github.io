@@ -47,8 +47,8 @@
           <div class="intro-text">
           <div class="intro-lead-in">Fast, Reliable, Easy</div>
           <div class="intro-heading text-uppercase">Professional Voice Over Services</div>
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger more" href="#services">Tell Me More</a>
-          <a style="border-color:#00b22d; background-color:#00b22d" class="btn btn-primary btn-xl text-uppercase" href="https://www.fiverr.com/asbaldwin">Hire on Fiverr</a>
+          <a onClick="ga('send', {hitType: 'event', eventCategory: 'Click', eventAction: 'click', eventLabel: 'Header-tell-me'});" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger more" href="#services">Tell Me More</a>
+          <a onClick="ga('send', {hitType: 'event', eventCategory: 'Outbound Link', eventAction: 'click', eventLabel: 'Header-Hire-on'});" style="border-color:#00b22d; background-color:#00b22d" class="btn btn-primary btn-xl text-uppercase" href="https://www.fiverr.com/asbaldwin">Hire on Fiverr</a>
           {% else %}
           <header class="clearfix">
           {% endif %}
@@ -72,16 +72,16 @@
           <ul class="navbar-nav text-uppercase ml-auto">
             {% if page.url == "/" %}
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+              <a onClick="ga('send', {hitType: 'event', eventCategory: 'Click', eventAction: 'click', eventLabel: 'Menu-Services'});" class="nav-link js-scroll-trigger" href="#services">Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+              <a onClick="ga('send', {hitType: 'event', eventCategory: 'Click', eventAction: 'click', eventLabel: 'Menu-Portfolio'});" class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+              <a onClick="ga('send', {hitType: 'event', eventCategory: 'Click', eventAction: 'click', eventLabel: 'Menu-About'});" class="nav-link js-scroll-trigger" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+              <a onClick="ga('send', {hitType: 'event', eventCategory: 'Click', eventAction: 'click', eventLabel: 'Menu-Contact'});" class="nav-link js-scroll-trigger" href="#contact">Contact</a>
             </li>
             <!--
             <li class="nav-item">
@@ -141,5 +141,15 @@
 
     <!-- Custom scripts for this template -->
     <script src="../js/agency.js"></script>
+
+    <script type="text/javascript">
+      function handleOutboundLinkClicks(event) {
+      ga('send', 'event', {
+        eventCategory: 'Outbound Link',
+        eventAction: 'click',
+        eventLabel: event.target.href
+      });
+    }
+    </script>
   </body>
 </html>
