@@ -1,0 +1,159 @@
+---
+const pricingPlans = [
+  {
+    name: "Audiobook Narration",
+    price: "$250",
+    unit: "per finished hour",
+    description: "Professional audiobook narration with character voices and emotional depth",
+    features: [
+      "Character voice development",
+      "Multiple takes per chapter",
+      "Professional editing & mastering",
+      "Unlimited revisions",
+      "24-hour sample turnaround",
+      "Royalty share option available"
+    ],
+    popular: true
+  },
+  {
+    name: "Commercial Voice Over",
+    price: "$150",
+    unit: "per 30-second spot",
+    description: "High-impact commercial voice over for TV, radio, and digital",
+    features: [
+      "Multiple takes & styles",
+      "Music bed integration",
+      "Broadcast quality audio",
+      "Rush delivery available",
+      "Unlimited revisions",
+      "Usage rights included"
+    ],
+    popular: false
+  },
+  {
+    name: "E-Learning & Training",
+    price: "$200",
+    unit: "per hour of content",
+    description: "Clear, engaging narration for educational content and corporate training",
+    features: [
+      "Professional pacing",
+      "Technical term pronunciation",
+      "Multiple language options",
+      "Chapter markers included",
+      "Custom delivery style",
+      "Bulk pricing available"
+    ],
+    popular: false
+  }
+];
+
+const addOns = [
+  { service: "Rush Delivery (24-48 hours)", price: "+50%" },
+  { service: "Character Voice Development", price: "+$100" },
+  { service: "Music & Sound Effects", price: "+$200" },
+  { service: "Multiple Language Versions", price: "+$150 per language" },
+  { service: "Custom Audio Branding", price: "+$300" }
+];
+---
+
+<section class="py-20 bg-brand-secondary/20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-brand-primary mb-4">Transparent Pricing</h2>
+      <p class="text-lg text-brand-muted max-w-2xl mx-auto">
+        Professional voice over services with clear, upfront pricing. No hidden fees, no surprises.
+      </p>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      {pricingPlans.map((plan) => (
+        <div class={`card p-8 relative ${plan.popular ? 'ring-2 ring-brand-accent' : ''}`}>
+          {plan.popular && (
+            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+              <span class="bg-brand-accent text-white px-4 py-1 rounded-full text-sm font-medium">
+                Most Popular
+              </span>
+            </div>
+          )}
+          
+          <div class="text-center mb-6">
+            <h3 class="text-xl font-semibold text-brand-primary mb-2">{plan.name}</h3>
+            <div class="mb-2">
+              <span class="text-4xl font-bold text-brand-accent">{plan.price}</span>
+              <span class="text-brand-muted ml-1">{plan.unit}</span>
+            </div>
+            <p class="text-brand-muted text-sm">{plan.description}</p>
+          </div>
+
+          <ul class="space-y-3 mb-8">
+            {plan.features.map((feature) => (
+              <li class="flex items-start space-x-3">
+                <svg class="w-5 h-5 text-brand-success mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                <span class="text-sm text-brand-muted">{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a 
+            href="#contact" 
+            class={`w-full text-center py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
+              plan.popular 
+                ? 'bg-brand-accent text-white hover:bg-brand-accent-hover' 
+                : 'bg-white text-brand-accent border-2 border-brand-accent hover:bg-brand-accent hover:text-white'
+            }`}
+          >
+            Get Started
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Add-ons -->
+    <div class="bg-white rounded-2xl p-8 shadow-sm border border-brand-light">
+      <h3 class="text-xl font-semibold text-brand-primary mb-6 text-center">Additional Services</h3>
+      <div class="flex flex-wrap gap-3">
+        {addOns.map((addon) => (
+          <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 border border-blue-200 rounded-full text-sm font-medium shadow-sm hover:shadow-md transition-shadow duration-200">
+            <svg class="w-3 h-3 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            <span class="mr-2">{addon.service}</span>
+            <span class="font-semibold text-blue-800">{addon.price}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Pricing Notes -->
+    <div class="mt-12 text-center space-y-4">
+      <div class="inline-flex items-center space-x-6 text-sm text-brand-muted">
+        <div class="flex items-center space-x-2">
+          <svg class="w-4 h-4 text-brand-success" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+          <span>No hidden fees</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-4 h-4 text-brand-success" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+          <span>Bulk discounts available</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-4 h-4 text-brand-success" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+          <span>Custom quotes available</span>
+        </div>
+      </div>
+      
+      <p class="text-sm text-brand-muted">
+        All prices include professional editing, mastering, and delivery in your preferred format. 
+        <a href="#contact" class="text-brand-accent hover:underline">Contact me</a> for a custom quote on your project.
+      </p>
+    </div>
+  </div>
+</section>

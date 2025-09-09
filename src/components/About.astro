@@ -1,0 +1,106 @@
+---
+const aboutData = {
+  name: "Andrew Baldwin",
+  title: "Professional Voice Over Artist",
+  experience: "8+ years",
+  location: "Lancaster, PA",
+  specialties: ["Audiobooks", "YouTube", "E-Learning", "Documentaries"],
+  equipment: "Professional home studio with Neumann U87 microphone, Focusrite interface, and acoustic treatment",
+  training: "Graduated from York College of Pennsylvania with a BS in Music Education, ongoing training with industry professionals",
+  personalStory: "I fell in love with voice acting during my theater days in college. There's something magical about bringing words to life through voice alone. Whether it's helping an author's story reach new audiences or making a brand's message resonate, I'm passionate about every project that comes my way.",
+  achievements: ["100+ Completed Projects", "5-Star Client Rating", "24-Hour Turnaround", "Broadcast Quality"]
+};
+---
+
+<section class="py-20 bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Profile Image -->
+      <div class="relative">
+        <div class="aspect-square max-w-lg mx-auto lg:mx-0">
+          <img 
+            src="/images/pro-headshot.jpg" 
+            alt="Andrew Baldwin - Professional Voice Over Artist"
+            class="w-full h-full object-cover rounded-2xl shadow-xl"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- About Content -->
+      <div class="space-y-6">
+        <div>
+          <h2 class="text-3xl font-bold text-brand-primary mb-2">Meet <span class="voice-brand">Andrew Baldwin</span></h2>
+          <p class="text-xl text-brand-accent font-medium">{aboutData.title}</p>
+        </div>
+
+        <p class="text-lg text-brand-muted leading-relaxed">
+          {aboutData.personalStory}
+        </p>
+
+        <!-- Credentials Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 space-y-4">
+          <div class="space-y-4">
+            <h3 class="font-semibold text-brand-primary pl-4">Specialties</h3>
+            <div class="flex flex-wrap gap-2 pl-4">
+              {aboutData.specialties.map((specialty) => (
+                <span class="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 border border-purple-200 rounded-full text-sm font-medium shadow-sm hover:shadow-md transition-shadow duration-200">
+                  <svg class="w-3 h-3 mr-1.5 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  {specialty}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="font-semibold text-brand-primary">Location</h3>
+            <div class="flex items-center space-x-2 text-brand-muted">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              <span>{aboutData.location}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Equipment & Training -->
+        <div class="space-y-4">
+          <div class="p-4 bg-brand-secondary/50 rounded-lg">
+            <h4 class="font-semibold text-brand-primary mb-2">Professional Equipment</h4>
+            <p class="text-sm text-brand-muted">{aboutData.equipment}</p>
+          </div>
+          
+          <div class="p-4 bg-brand-secondary/50 rounded-lg">
+            <h4 class="font-semibold text-brand-primary mb-2">Training & Education</h4>
+            <p class="text-sm text-brand-muted">{aboutData.training}</p>
+          </div>
+        </div>
+
+        <!-- Achievements -->
+        <div class="grid grid-cols-2 gap-4 pt-4">
+          {aboutData.achievements.map((achievement) => (
+            <div class="text-center p-3 bg-brand-secondary/30 rounded-lg border border-brand-light/50">
+              <div class="text-sm font-semibold text-brand-accent">{achievement}</div>
+            </div>
+          ))}
+        </div>
+
+        <!-- CTA -->
+        <div class="pt-6">
+          <a 
+            href="#contact" 
+            class="btn-primary inline-flex items-center group"
+          >
+            Let's Work Together
+            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

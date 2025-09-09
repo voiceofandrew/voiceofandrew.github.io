@@ -1,0 +1,204 @@
+---
+import '../styles/global.css';
+const { title = 'Andrew Baldwin Voice - Professional Voice Over Artist', description = 'Professional voice over services with warm, clear, and versatile delivery. Fast turnarounds, broadcast-quality audio for commercials, narration, and more.', url = '' } = Astro.props;
+const links = [
+  { href: "#demos", label: "Demos" },
+  { href: "#testimonials", label: "Testimonials" },
+  { href: "#pricing", label: "Pricing" },
+  { href: "#contact", label: "Contact" },
+];
+
+const path = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const isActive = (href: string) => href === (path === "/" ? "/" : path);
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content="/og-image.jpg" />
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Baldwin Voice" />
+    <meta name="keywords" content="voice over, voiceover, commercial voice, narration, professional voice actor, voice talent" />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body class="min-h-screen bg-white text-brand-primary">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-brand-light">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="/" class="flex items-center space-x-2 group">
+            <div class="w-8 h-8 flex items-center justify-center">
+              <img src="/images/baldwinvoice-logo.png" alt="Andrew Baldwin Voice" class="w-8 h-8 rounded-lg" />
+            </div>
+            <span class="text-xl font-bold group-hover:voice-brand transition-all duration-300">
+              Andrew Baldwin Voice
+            </span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex items-center space-x-8">
+            {links.map((link) => (
+              <a
+                href={link.href}
+                class="text-sm font-medium text-brand-muted hover:text-brand-accent transition-colors duration-200 relative group"
+              >
+                {link.label}
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-accent transition-all duration-200 group-hover:w-full"></span>
+              </a>
+            ))}
+            <a
+              href="#contact"
+              class="btn-primary text-sm"
+            >
+              Get Quote
+            </a>
+          </nav>
+
+          <!-- Mobile Navigation -->
+          <details class="md:hidden group">
+            <summary class="cursor-pointer p-2 rounded-lg hover:bg-brand-secondary transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </summary>
+            <div class="absolute top-full left-0 right-0 mt-2 mx-4 bg-white rounded-xl shadow-lg border border-brand-light py-4 animate-fade-in">
+              <div class="flex flex-col space-y-2">
+                {links.map((link) => (
+                  <a
+                    href={link.href}
+                    class="px-4 py-2 text-sm font-medium text-brand-muted hover:text-brand-accent hover:bg-brand-secondary rounded-lg transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+                <a
+                  href="#contact"
+                  class="mx-4 mt-2 btn-primary text-sm text-center"
+                >
+                  Get Quote
+                </a>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-secondary border-t border-brand-light">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Brand -->
+          <div class="space-y-4">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 flex items-center justify-center">
+                <img src="/images/baldwinvoice-logo.png" alt="Andrew Baldwin Voice" class="w-8 h-8 rounded-lg" />
+              </div>
+              <span class="text-xl font-bold text-brand-primary">Andrew Baldwin Voice</span>
+            </div>
+            <p class="text-brand-muted text-sm leading-relaxed">
+              Professional voice over services with warm, clear, and versatile delivery. 
+              Fast turnarounds, broadcast-quality audio.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="space-y-4">
+            <h3 class="font-semibold text-brand-primary">Quick Links</h3>
+            <nav class="flex flex-col space-y-2">
+              <a href="#demos" class="text-sm text-brand-muted hover:text-brand-accent transition-colors">Demos</a>
+              <a href="#testimonials" class="text-sm text-brand-muted hover:text-brand-accent transition-colors">Testimonials</a>
+              <a href="#pricing" class="text-sm text-brand-muted hover:text-brand-accent transition-colors">Pricing</a>
+              <a href="#contact" class="text-sm text-brand-muted hover:text-brand-accent transition-colors">Contact</a>
+            </nav>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="space-y-4">
+            <h3 class="font-semibold text-brand-primary">Contact</h3>
+            <div class="space-y-2 text-sm text-brand-muted">
+              <p>andrew@baldwinvoice.com</p>
+              <p>610-952-5158</p>
+              <p>Available for projects worldwide</p>
+              <p>24-hour sample turnaround</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-brand-light">
+          <div class="text-center">
+            <p class="text-sm text-brand-muted">
+              © {new Date().getFullYear()} Andrew Baldwin Voice. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button 
+      id="scroll-to-top" 
+      class="fixed bottom-8 right-8 w-12 h-12 bg-brand-accent text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 opacity-0 pointer-events-none z-50"
+      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+      aria-label="Scroll to top"
+    >
+      <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+      </svg>
+    </button>
+
+    <script>
+      // Scroll to top button visibility
+      window.addEventListener('scroll', () => {
+        const scrollButton = document.getElementById('scroll-to-top');
+        if (window.scrollY > 300) {
+          scrollButton.classList.remove('opacity-0', 'pointer-events-none');
+        } else {
+          scrollButton.classList.add('opacity-0', 'pointer-events-none');
+        }
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

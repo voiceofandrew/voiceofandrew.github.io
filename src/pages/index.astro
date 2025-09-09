@@ -1,0 +1,146 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import AudioCard from "../components/AudioCard.astro";
+import Quote from "../components/Quote.astro";
+import Services from "../components/Services.astro";
+import Pricing from "../components/Pricing.astro";
+import ContactForm from "../components/ContactForm.astro";
+import testimonialsData from "../data/testimonials.json";
+---
+<Layout>
+  <Hero />
+
+  <!-- ABOUT -->
+  <About />
+
+  <!-- DEMOS -->
+  <section id="demos" class="py-20 bg-brand-secondary/30">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-brand-primary mb-4">Voice Over Demos</h2>
+        <p class="text-lg text-brand-muted max-w-2xl mx-auto">
+          Explore my diverse range of voice over styles. Each demo showcases different tones, 
+          pacing, and emotional delivery to match your project needs.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <AudioCard 
+          title="Commercial — Energetic & Upbeat" 
+          src="/audio/demo-1.mp3" 
+          category="Commercial"
+          duration="0:30"
+        />
+        <AudioCard 
+          title="Narration — Warm & Conversational" 
+          src="/audio/demo-2.mp3" 
+          category="Narration"
+          duration="0:45"
+        />
+        <AudioCard 
+          title="E-Learning — Clear & Professional" 
+          src="/audio/demo-3.mp3" 
+          category="E-Learning"
+          duration="1:00"
+        />
+        <AudioCard 
+          title="Audiobook — Engaging Storytelling" 
+          src="/audio/demo-4.mp3" 
+          category="Audiobook"
+          duration="1:15"
+        />
+        <AudioCard 
+          title="IVR — Friendly & Helpful" 
+          src="/audio/demo-5.mp3" 
+          category="IVR"
+          duration="0:20"
+        />
+        <AudioCard 
+          title="Documentary — Authoritative" 
+          src="/audio/demo-6.mp3" 
+          category="Documentary"
+          duration="0:40"
+        />
+      </div>
+
+      <!-- Full Reels CTA -->
+      <div class="mt-16 text-center">
+        <div class="inline-flex items-center px-6 py-3 bg-white rounded-xl shadow-sm border border-brand-light">
+          <svg class="w-5 h-5 text-brand-accent mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+          </svg>
+          <span class="text-sm text-brand-muted">Need full reels? </span>
+          <a href="#contact" class="text-sm font-medium text-brand-accent hover:text-brand-accent-hover ml-1">
+            Request complete demos →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="py-20 bg-gradient-to-br from-brand-dark via-brand-primary to-brand-dark text-white relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(99,102,241,0.2),transparent_50%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(139,92,246,0.2),transparent_50%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,72,153,0.1),transparent_60%)]"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold mb-4" style="color: #1f2937 !important; background: none !important; -webkit-background-clip: unset !important; -webkit-text-fill-color: unset !important;">What Clients Say</h2>
+        <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+          Don't just take my word for it. Here's what industry professionals say about working with me.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {testimonialsData.map((testimonial) => (
+          <Quote 
+            quote={testimonial.quote}
+            byline={testimonial.byline}
+            company={testimonial.company}
+          />
+        ))}
+      </div>
+
+      <!-- Trust Indicators -->
+      <div class="mt-16 text-center">
+        <div class="inline-flex items-center space-x-8 text-sm text-white/80">
+          <div class="flex items-center space-x-2">
+            <svg class="w-5 h-5 text-brand-success" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            <span>100% Client Satisfaction</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <svg class="w-5 h-5 text-brand-success" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            <span>24h Sample Turnaround</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <svg class="w-5 h-5 text-brand-success" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            <span>Broadcast Quality Audio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <Services />
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <Pricing />
+  </section>
+
+
+  <!-- CONTACT FORM -->
+  <section id="contact">
+    <ContactForm />
+  </section>
+</Layout>
