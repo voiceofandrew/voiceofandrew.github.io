@@ -8,7 +8,6 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   site: 'https://voiceofandrew.github.io',
-  base: '/baldwinvoice'
   compressHTML: true,
   build: {
     inlineStylesheets: 'auto',
