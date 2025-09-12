@@ -1,8 +1,10 @@
 ---
+import { ArrowRightIcon, EnvelopeIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+
 const {
-  title = "Voiceover that connects",
-  subtitle = "Warm, clear, and versatile. Fast turnarounds, broadcast-quality audio.",
-  description = "Professional voice over services for commercials, narration, e-learning, and more. Available worldwide with 24-hour sample turnaround."
+  title = "The Voice for Your Project",
+  subtitle = "Fast turnarounds. Broadcast-quality audio.",
+  description = "Professional voice over services for audiobooks, youtube, commercials, political, e-learning, and more. Available worldwide with 24-hour sample turnaround."
 } = Astro.props;
 ---
 
@@ -10,9 +12,9 @@ const {
 <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
   <!-- Background Elements -->
   <div class="absolute inset-0 bg-gradient-to-br from-brand-secondary via-white to-brand-secondary/50"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.15),transparent_50%)]"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.15),transparent_50%)]"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,72,153,0.1),transparent_60%)]"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.15),transparent_50%)]"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(30,64,175,0.15),transparent_50%)]"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(219,234,254,0.2),transparent_60%)]"></div>
   
   <!-- Content -->
   <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
@@ -51,18 +53,14 @@ const {
             class="btn-primary text-lg px-8 py-4 group"
           >
             Listen to Demos
-            <svg class="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-            </svg>
+            <ArrowRightIcon className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
           </a>
           <a 
             href="#contact" 
             class="btn-secondary text-lg px-8 py-4 group"
           >
             Get Custom Sample
-            <svg class="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-            </svg>
+            <EnvelopeIcon className="w-5 h-5 ml-2 inline-block group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
 
@@ -73,7 +71,7 @@ const {
             <div class="text-sm text-brand-muted">Sample Turnaround</div>
           </div>
           <div class="text-center lg:text-left">
-            <div class="text-3xl font-bold text-brand-accent">100+</div>
+            <div class="text-3xl font-bold text-brand-accent">1000+</div>
             <div class="text-sm text-brand-muted">Projects Completed</div>
           </div>
           <div class="text-center lg:text-left">
@@ -88,9 +86,7 @@ const {
   <!-- Scroll Indicator -->
   <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
     <a href="#demos" class="block">
-      <svg class="w-6 h-6 text-brand-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-      </svg>
+      <ChevronDownIcon className="w-6 h-6 text-brand-muted" />
     </a>
   </div>
 </section>

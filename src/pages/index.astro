@@ -5,9 +5,10 @@ import About from "../components/About.astro";
 import AudioCard from "../components/AudioCard.astro";
 import Quote from "../components/Quote.astro";
 import Services from "../components/Services.astro";
-import Pricing from "../components/Pricing.astro";
 import ContactForm from "../components/ContactForm.astro";
 import testimonialsData from "../data/testimonials.json";
+import demosData from "../data/demos.json";
+import { CheckCircleIcon, ClockIcon, StarIcon } from '@heroicons/react/24/outline';
 ---
 <Layout>
   <Hero />
@@ -27,42 +28,12 @@ import testimonialsData from "../data/testimonials.json";
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <AudioCard 
-          title="Commercial — Energetic & Upbeat" 
-          src="/audio/demo-1.mp3" 
-          category="Commercial"
-          duration="0:30"
-        />
-        <AudioCard 
-          title="Narration — Warm & Conversational" 
-          src="/audio/demo-2.mp3" 
-          category="Narration"
-          duration="0:45"
-        />
-        <AudioCard 
-          title="E-Learning — Clear & Professional" 
-          src="/audio/demo-3.mp3" 
-          category="E-Learning"
-          duration="1:00"
-        />
-        <AudioCard 
-          title="Audiobook — Engaging Storytelling" 
-          src="/audio/demo-4.mp3" 
-          category="Audiobook"
-          duration="1:15"
-        />
-        <AudioCard 
-          title="IVR — Friendly & Helpful" 
-          src="/audio/demo-5.mp3" 
-          category="IVR"
-          duration="0:20"
-        />
-        <AudioCard 
-          title="Documentary — Authoritative" 
-          src="/audio/demo-6.mp3" 
-          category="Documentary"
-          duration="0:40"
-        />
+        {demosData.map((demo) => (
+          <AudioCard 
+            title={demo.title}
+            src={demo.src}
+          />
+        ))}
       </div>
 
       <!-- Full Reels CTA -->
@@ -81,15 +52,15 @@ import testimonialsData from "../data/testimonials.json";
   </section>
 
   <!-- TESTIMONIALS -->
-  <section id="testimonials" class="py-20 bg-gradient-to-br from-brand-dark via-brand-primary to-brand-dark text-white relative overflow-hidden">
+  <section id="testimonials" class="py-20 bg-gradient-to-br from-brand-secondary via-white to-brand-secondary/50 relative overflow-hidden">
     <!-- Background Elements -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(99,102,241,0.2),transparent_50%)]"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(139,92,246,0.2),transparent_50%)]"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,72,153,0.1),transparent_60%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.15),transparent_50%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(30,64,175,0.15),transparent_50%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(219,234,254,0.2),transparent_60%)]"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold mb-4" style="color: #1f2937 !important; background: none !important; -webkit-background-clip: unset !important; -webkit-text-fill-color: unset !important;">What Clients Say</h2>
-        <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+        <h2 class="text-3xl font-bold text-brand-primary mb-4">What Clients Say</h2>
+        <p class="text-lg text-brand-muted max-w-2xl mx-auto">
           Don't just take my word for it. Here's what industry professionals say about working with me.
         </p>
       </div>
@@ -106,23 +77,17 @@ import testimonialsData from "../data/testimonials.json";
 
       <!-- Trust Indicators -->
       <div class="mt-16 text-center">
-        <div class="inline-flex items-center space-x-8 text-sm text-white/80">
+        <div class="inline-flex items-center space-x-8 text-sm text-brand-muted">
           <div class="flex items-center space-x-2">
-            <svg class="w-5 h-5 text-brand-success" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-            </svg>
+            <CheckCircleIcon className="w-5 h-5 text-brand-success" />
             <span>100% Client Satisfaction</span>
           </div>
           <div class="flex items-center space-x-2">
-            <svg class="w-5 h-5 text-brand-success" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-            </svg>
+            <ClockIcon className="w-5 h-5 text-brand-success" />
             <span>24h Sample Turnaround</span>
           </div>
           <div class="flex items-center space-x-2">
-            <svg class="w-5 h-5 text-brand-success" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-            </svg>
+            <StarIcon className="w-5 h-5 text-brand-success" />
             <span>Broadcast Quality Audio</span>
           </div>
         </div>
@@ -132,11 +97,6 @@ import testimonialsData from "../data/testimonials.json";
 
   <!-- SERVICES -->
   <Services />
-
-  <!-- PRICING -->
-  <section id="pricing">
-    <Pricing />
-  </section>
 
 
   <!-- CONTACT FORM -->

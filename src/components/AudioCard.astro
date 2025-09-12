@@ -1,73 +1,50 @@
 ---
-const { title, src, category, duration } = Astro.props as { 
+const { title, src } = Astro.props as { 
   title: string; 
   src: string; 
-  category?: string; 
-  duration?: string; 
 };
 ---
 
-<article class="card group overflow-hidden">
+<article class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden border border-gray-100 hover:border-brand-accent/20 hover:-translate-y-1 relative">
+  <!-- Accent Line -->
+  <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-accent to-brand-primary rounded-t-2xl"></div>
+  
   <!-- Header -->
-  <div class="p-6 pb-4">
-    <div class="flex items-start justify-between mb-4">
+  <div class="p-6 pb-4 bg-gradient-to-br from-blue-50/30 via-purple-50/20 to-white pt-8 relative overflow-hidden">
+    <!-- Subtle background pattern -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.05),transparent_50%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(139,92,246,0.05),transparent_50%)]"></div>
+    <div class="flex items-start justify-between mb-4 relative z-10">
       <div class="flex-1">
-        <div class="flex items-center gap-2 mb-2">
-          {category && (
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brand-accent/10 text-brand-accent">
-              {category}
-            </span>
-          )}
-          {duration && (
-            <span class="text-xs text-brand-muted">
-              {duration}
-            </span>
-          )}
-        </div>
-        <h3 class="text-lg font-semibold text-brand-primary">
+        <h3 class="text-lg font-semibold bg-gradient-to-r from-brand-primary via-brand-accent to-brand-secondary bg-clip-text text-transparent group-hover:from-brand-accent group-hover:via-brand-secondary group-hover:to-brand-primary transition-all duration-300">
           {title}
         </h3>
       </div>
-      
-      <!-- Play Button -->
-      <button 
-        class="flex-shrink-0 w-12 h-12 voice-glow rounded-full flex items-center justify-center text-white shadow-md"
-        onclick="this.nextElementSibling.play()"
-        aria-label={`Play ${title}`}
-      >
-        <svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M8 5v14l11-7z"/>
-        </svg>
-      </button>
     </div>
   </div>
 
   <!-- Audio Player -->
-  <div class="px-6 pb-6">
-    <div class="relative">
-      <!-- Custom Audio Controls -->
-      <audio 
-        class="w-full h-12 bg-brand-secondary rounded-lg shadow-inner" 
-        controls 
-        preload="metadata" 
-        src={src}
-        onloadedmetadata="this.nextElementSibling.querySelector('.duration').textContent = formatTime(this.duration)"
-        onerror="this.nextElementSibling.querySelector('.duration').textContent = 'Error loading audio'"
-      >
-        Your browser does not support the audio element.
-      </audio>
-      
-    </div>
+  <div class="px-6 pb-6 bg-gradient-to-b from-white to-gray-50/50">
+    <audio 
+      id={`audio-${Math.random().toString(36).substr(2, 9)}`}
+      class="w-full" 
+      controls 
+      preload="metadata" 
+      src={src}
+      onloadedmetadata="updateDuration(this)"
+      onerror="this.parentElement.querySelector('.duration').textContent = 'Error loading audio'"
+    >
+      Your browser does not support the audio element.
+    </audio>
     
     <!-- Audio Info -->
-    <div class="mt-3 flex items-center justify-between text-xs text-brand-muted">
-      <span class="flex items-center gap-1">
+    <div class="mt-4 flex items-center justify-center">
+      <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 text-brand-primary font-medium text-xs border border-blue-200">
         <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
         </svg>
-        High Quality
+        High Quality Audio
       </span>
-      <span class="duration loading-skeleton px-2 py-1 rounded">--:--</span>
     </div>
   </div>
 
@@ -80,30 +57,35 @@ const { title, src, category, duration } = Astro.props as {
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs.toString().padStart(2, '0')}`;
   }
+
+  function updateDuration(audioElement: HTMLAudioElement) {
+    const durationElement = audioElement.parentElement?.nextElementSibling?.querySelector('.duration');
+    if (durationElement) {
+      durationElement.textContent = formatTime(audioElement.duration);
+    }
+  }
 </script>
 
 <style>
-  /* Custom audio player styling */
+  /* Simple audio player styling */
+  audio {
+    width: 100%;
+    height: 40px;
+    border-radius: 0.5rem;
+    background: #f8f9fa;
+  }
+  
   audio::-webkit-media-controls-panel {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: #f8f9fa;
     border-radius: 0.5rem;
   }
   
   audio::-webkit-media-controls-play-button,
   audio::-webkit-media-controls-pause-button {
-    background: var(--gradient-primary);
     border-radius: 50%;
   }
   
   audio::-webkit-media-controls-timeline {
-    background: var(--color-brand-light);
     border-radius: 0.25rem;
-    height: 4px;
-  }
-  
-  audio::-webkit-media-controls-current-time-display,
-  audio::-webkit-media-controls-time-remaining-display {
-    color: var(--color-brand-muted);
-    font-size: 0.75rem;
   }
 </style>

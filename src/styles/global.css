@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-blue-light: #dbeafe;
+  --color-brand-blue: #1e40af;
+  --color-brand-blue-border: #bfdbfe;
+}
+
 /* Custom CSS variables - Tailwind v4 automatically detects these */
 :root {
   --color-brand-primary: #0a0a0a;
@@ -14,12 +20,15 @@
   --color-brand-purple: #8b5cf6;
   --color-brand-pink: #ec4899;
   --color-brand-cyan: #06b6d4;
+  --color-brand-blue-light: #dbeafe;
+  --color-brand-blue: #1e40af;
+  --color-brand-blue-border: #bfdbfe;
   
   /* Advanced Gradients */
   --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --gradient-voice: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+  --gradient-voice: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #8b5cf6 100%);
   --gradient-tech: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
   

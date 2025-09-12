@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Commercial — Energetic & Upbeat",
+    "src": "/audio/Reading.mp3"
+  },
+  {
+    "title": "Narration — Warm & Conversational",
+    "src": "/audio/Reading.mp3"
+  },
+  {
+    "title": "E-Learning — Clear & Professional",
+    "src": "/audio/Reading.mp3"
+  },
+  {
+    "title": "Audiobook — Engaging Storytelling",
+    "src": "/audio/Reading.mp3"
+  },
+  {
+    "title": "IVR — Friendly & Helpful",
+    "src": "/audio/Reading.mp3"
+  },
+  {
+    "title": "Documentary — Authoritative",
+    "src": "/audio/Reading.mp3"
+  }
+]
