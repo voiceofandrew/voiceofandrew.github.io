@@ -1,26 +1,26 @@
 [
   {
-    "title": "Commercial — Energetic & Upbeat",
-    "src": "/audio/Reading.mp3"
+    "title": "Commercial Demo",
+    "src": "/audio/Commercial Demo.wav"
   },
   {
-    "title": "Narration — Warm & Conversational",
-    "src": "/audio/Reading.mp3"
+    "title": "Narration Demo",
+    "src": "/audio/Narration Demo.wav"
   },
   {
-    "title": "E-Learning — Clear & Professional",
-    "src": "/audio/Reading.mp3"
+    "title": "Audiobook Demo",
+    "src": "/audio/Audiobook Demo.wav"
   },
   {
-    "title": "Audiobook — Engaging Storytelling",
-    "src": "/audio/Reading.mp3"
+    "title": "YouTube Demo",
+    "src": "/audio/YouTube Demo.wav"
   },
   {
-    "title": "IVR — Friendly & Helpful",
-    "src": "/audio/Reading.mp3"
+    "title": "Political Demo",
+    "src": "/audio/Political Demo.wav"
   },
   {
-    "title": "Documentary — Authoritative",
-    "src": "/audio/Reading.mp3"
+    "title": "Audio Engineering Demo",
+    "src": "/audio/Audio Engineering Demo.wav"
   }
 ]

@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-const { title = 'Andrew Baldwin Voice - Professional Voice Over Artist', description = 'Professional voice over services with warm, clear, and versatile delivery. Fast turnarounds, broadcast-quality audio for commercials, narration, and more.', url = '' } = Astro.props;
+const { title = 'Andrew Baldwin Voice - Professional Voice Over Artist', description = 'Professional voice over services with warm, clear, and versatile delivery. Fast turnarounds, broadcast-quality audio for commercials, narration, and more.', url = 'https://www.baldwinvoice.com' } = Astro.props;
 const links = [
   { href: "#demos", label: "Demos" },
   { href: "#testimonials", label: "Testimonials" },
@@ -25,19 +25,77 @@ const isActive = (href: string) => href === (path === "/" ? "/" : path);
     <meta property="og:url" content={url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image" content="/images/casual-headshot.jpg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={url} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content="/og-image.jpg" />
+    <meta property="twitter:image" content="/images/casual-headshot.jpg" />
 
     <!-- Additional SEO -->
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Baldwin Voice" />
     <meta name="keywords" content="voice over, voiceover, commercial voice, narration, professional voice actor, voice talent" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={url} />
+    
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Andrew Baldwin",
+      "url": "https://www.baldwinvoice.com",
+      "image": "https://www.baldwinvoice.com/images/casual-headshot.jpg",
+      "jobTitle": "Professional Voice Actor",
+      "description": "Professional voice over services with warm, clear, and versatile delivery. Fast turnarounds, broadcast-quality audio for commercials, narration, and more.",
+      "email": "andrew@baldwinvoice.com",
+      "telephone": "610-952-5158",
+      "sameAs": [],
+      "offers": {
+        "@type": "Offer",
+        "description": "Voice over services for commercials, audiobooks, podcasts, and more",
+        "category": "Voice Over Services"
+      }
+    }
+    </script>
+    
+    <!-- BreadcrumbList Schema for Google Quick Links -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.baldwinvoice.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Voice Over Demos",
+          "item": "https://www.baldwinvoice.com#demos"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Testimonials",
+          "item": "https://www.baldwinvoice.com#testimonials"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Get Quote",
+          "item": "https://www.baldwinvoice.com#contact"
+        }
+      ]
+    }
+    </script>
     
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -177,24 +235,42 @@ const isActive = (href: string) => href === (path === "/" ? "/" : path);
       // Scroll to top button visibility
       window.addEventListener('scroll', () => {
         const scrollButton = document.getElementById('scroll-to-top');
-        if (window.scrollY > 300) {
-          scrollButton.classList.remove('opacity-0', 'pointer-events-none');
-        } else {
-          scrollButton.classList.add('opacity-0', 'pointer-events-none');
+        if (scrollButton) {
+          if (window.scrollY > 300) {
+            scrollButton.classList.remove('opacity-0', 'pointer-events-none');
+          } else {
+            scrollButton.classList.add('opacity-0', 'pointer-events-none');
+          }
         }
       });
 
       // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function (this: HTMLAnchorElement, e: Event) {
           e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
+          const href = this.getAttribute('href');
+          const target = href ? document.querySelector(href) : null;
           if (target) {
             target.scrollIntoView({
               behavior: 'smooth',
               block: 'start'
             });
           }
+        });
+      });
+
+      // Audio manager for demo cards - pause others when one plays
+      let currentAudio: HTMLAudioElement | null = null;
+      
+      document.querySelectorAll('audio').forEach(audio => {
+        audio.addEventListener('play', function() {
+          // Pause all other audio elements
+          document.querySelectorAll('audio').forEach(otherAudio => {
+            if (otherAudio !== this && !otherAudio.paused) {
+              otherAudio.pause();
+            }
+          });
+          currentAudio = this;
         });
       });
     </script>

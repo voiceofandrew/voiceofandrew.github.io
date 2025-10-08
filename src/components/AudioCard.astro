@@ -14,9 +14,12 @@ const { title, src } = Astro.props as {
     <!-- Subtle background pattern -->
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.05),transparent_50%)]"></div>
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(139,92,246,0.05),transparent_50%)]"></div>
-    <div class="flex items-start justify-between mb-4 relative z-10">
-      <div class="flex-1">
-        <h3 class="text-lg font-semibold bg-gradient-to-r from-brand-primary via-brand-accent to-brand-secondary bg-clip-text text-transparent group-hover:from-brand-accent group-hover:via-brand-secondary group-hover:to-brand-primary transition-all duration-300">
+    <div class="flex items-center justify-between mb-4 relative z-10">
+      <div class="flex-1 flex items-center gap-2">
+        <svg class="w-5 h-5 text-brand-accent" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M3 12h2m2 0h2m2 0h2m2 0h2m2 0h2M7 12v-3m0 3v3m4-3V7m0 5v5m4-5V9m0 3v4m4-4v-2m0 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <h3 class="text-lg font-semibold tracking-tight !text-brand-primary">
           {title}
         </h3>
       </div>
@@ -26,7 +29,7 @@ const { title, src } = Astro.props as {
   <!-- Audio Player -->
   <div class="px-6 pb-6 bg-gradient-to-b from-white to-gray-50/50">
     <audio 
-      id={`audio-${Math.random().toString(36).substr(2, 9)}`}
+      id={`audio-${Math.random().toString(36).slice(2, 11)}`}
       class="w-full" 
       controls 
       preload="metadata" 
