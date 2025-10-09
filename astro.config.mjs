@@ -9,7 +9,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://voiceofandrew.github.io',
+  site: 'https://baldwinvoice.com',
   compressHTML: true,
   build: {
     inlineStylesheets: 'auto',
